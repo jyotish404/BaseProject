@@ -1,0 +1,40 @@
+{% extends 'team_member/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_content %}
+<title> Add </title>
+{% endblock %}
+
+{% block body_content %}
+<h1> Add a team member </h1>
+<p class="fs-5" style="color:#9e9e9e;"> Set email, location and role. </p>
+
+<hr style="height:1px;border-width:0;color:gray;background-color:gray">
+
+<h3 class="fs-5"> Info </h3>
+
+<form class="" enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  <p> <input type="text" name="first_name" placeholder="First name" size="50" style=" border: 1px solid #9e9e9e;
+  border-radius: 4px;height: 1cm;" required> </p>
+   <p> <input type="text" name="last_name" placeholder="Last name" size="50"  style=" border: 1px solid #9e9e9e;
+  border-radius: 4px;height: 1cm;" required/> </p>
+  <p> <input type="email" name="email" placeholder="Email" size="50"  style=" border: 1px solid #9e9e9e;
+  border-radius: 4px;height: 1cm;"required/> </p>
+  <p> {{ form.phone_number|as_crispy_field }} </p>
+  <p> Profile Picture <input type="file" name="picture"/> </p>
+  <h3> Role </h3>
+  <p> {{ form.admin_role|as_crispy_field }} </p>
+  <div class="container">
+    <div class="row justify-content-end">
+      <div class="col">
+      </div>
+      <div class="col">
+      </div>
+      <div class="col">
+         <input type="submit" value="Save" class="btn btn-primary" style="height:1cm;width:3cm;">
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
